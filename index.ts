@@ -8,7 +8,7 @@ import sitterRequestPage from "./routes/sitter_request_page";
 
 const app: Express = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.use(
   cors({
@@ -25,6 +25,6 @@ app.use(customerPage);
 app.use(customerRequestPage);
 app.use(sitterRequestPage);
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
   console.log(`server is running on port ${PORT}`);
 });
