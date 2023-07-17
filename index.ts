@@ -8,6 +8,8 @@ import sitterRequestPage from "./routes/sitter_request_page";
 
 const app: Express = express();
 
+const PORT = process.env.PORT || 3000;
+
 app.use(
   cors({
     origin: "http://127.0.0.1:5173",
@@ -18,11 +20,11 @@ app.use(
 app.use(express.static("public"));
 app.use(express.json());
 
-app.use(authRoutes); 
-app.use(customerPage)
-app.use(customerRequestPage)
-app.use(sitterRequestPage)
+app.use(authRoutes);
+app.use(customerPage);
+app.use(customerRequestPage);
+app.use(sitterRequestPage);
 
-app.listen(3000, () => {
-  console.log("server is running");
+app.listen(PORT, () => {
+  console.log(`server is running on port ${PORT}`);
 });
