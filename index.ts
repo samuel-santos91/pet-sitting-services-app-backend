@@ -18,11 +18,13 @@ app.use(
 app.use(express.static("public"));
 app.use(express.json());
 
-app.use(authRoutes); 
-app.use(customerPage)
-app.use(customerRequestPage)
-app.use(sitterRequestPage)
+app.use(authRoutes);
+app.use(customerPage);
+app.use(customerRequestPage);
+app.use(sitterRequestPage);
 
-app.listen(3000, () => {
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
   console.log("server is running");
 });
