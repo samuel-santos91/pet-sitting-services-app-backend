@@ -11,7 +11,7 @@ const app: Express = express();
 app.use(
   cors({
     origin:
-      "https://64b8f1b9900f0661a42c3cb3--clinquant-frangollo-bba5e1.netlify.app",
+      "https://64ba4036ee065958269a4ebb--clinquant-frangollo-bba5e1.netlify.app/",
     methods: ["POST", "GET"],
     credentials: true,
   })
