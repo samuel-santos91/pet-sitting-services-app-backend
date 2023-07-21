@@ -9,7 +9,7 @@ const router = express.Router();
 //LIST OF SITTERS
 router.get("/customer/sitters", async (req: Request, res: Response) => {
   const existingSitter = await db.query(
-    "SELECT id, first_name, last_name, summary, hour_rate, day_rate FROM marketplace_app.sitters_info;"
+    "SELECT id, first_name, last_name, summary, hour_rate, day_rate FROM heroku_d1337da861f75bf.sitters_info;"
   );
   return res.json({ existingSitter });
 });
@@ -45,7 +45,7 @@ router.post(
       req.file?.path,
     ];
     await db.query(
-      "INSERT INTO marketplace_app.users_requests (user, pet, care_type, sitter, message, image_path) VALUES (?)",
+      "INSERT INTO heroku_d1337da861f75bf.users_requests (user, pet, care_type, sitter, message, image_path) VALUES (?)",
       [userRequest]
     );
     console.log(req.body);
