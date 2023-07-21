@@ -8,7 +8,12 @@ import sitterRequestPage from "./routes/sitter_request_page";
 
 const app: Express = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin:
+      "https://64b8f1b9900f0661a42c3cb3--clinquant-frangollo-bba5e1.netlify.app",
+  })
+);
 
 app.use(express.static("public"));
 app.use(express.json());
