@@ -19,7 +19,7 @@ const database_1 = __importDefault(require("../data/database"));
 const router = express_1.default.Router();
 //LIST OF SITTERS
 router.get("/customer/sitters", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const existingSitter = yield database_1.default.query("SELECT id, first_name, last_name, summary, hour_rate, day_rate FROM marketplace_app.sitters_info;");
+    const existingSitter = yield database_1.default.query("SELECT id, first_name, last_name, summary, hour_rate, day_rate FROM heroku_d1337da861f75bf.sitters_info;");
     return res.json({ existingSitter });
 }));
 //STORE IN SERVER
@@ -45,7 +45,7 @@ router.post("/customer/post", upload.single("image"), (req, res) => __awaiter(vo
         req.body.message,
         (_a = req.file) === null || _a === void 0 ? void 0 : _a.path,
     ];
-    yield database_1.default.query("INSERT INTO marketplace_app.users_requests (user, pet, care_type, sitter, message, image_path) VALUES (?)", [userRequest]);
+    yield database_1.default.query("INSERT INTO heroku_d1337da861f75bf.users_requests (user, pet, care_type, sitter, message, image_path) VALUES (?)", [userRequest]);
     console.log(req.body);
     console.log(req.file);
     res.send("request added");

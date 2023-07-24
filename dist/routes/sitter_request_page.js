@@ -17,12 +17,12 @@ const database_1 = __importDefault(require("../data/database"));
 const router = express_1.default.Router();
 //LIST OF REQUESTS
 router.get("/sitter/requests", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const userRequests = yield database_1.default.query("SELECT id, user, pet, image_path, care_type, sitter, message, status, created_at FROM marketplace_app.users_requests;");
+    const userRequests = yield database_1.default.query("SELECT id, user, pet, image_path, care_type, sitter, message, status, created_at FROM heroku_d1337da861f75bf.users_requests;");
     return res.json({ userRequests });
 }));
 //ACCEPT OR REJECT
 router.post("/sitter/request_answer", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    yield database_1.default.query("UPDATE marketplace_app.users_requests SET status = ? WHERE id = ?", [req.body.answer, parseInt(req.body.request_id)]);
+    yield database_1.default.query("UPDATE heroku_d1337da861f75bf.users_requests SET status = ? WHERE id = ?", [req.body.answer, parseInt(req.body.request_id)]);
     return res.send("Sent");
 }));
 exports.default = router;
