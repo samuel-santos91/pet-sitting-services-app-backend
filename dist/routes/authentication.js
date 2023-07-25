@@ -27,8 +27,8 @@ router.get("/", (req, res) => {
 //SIGN UP
 router.post("/sign-up", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const email = req.body.email;
-    const existingUser = yield database_1.default.query("SELECT * FROM heroku_d1337da861f75bf.users_info WHERE email = ?", [email]);
-    const existingSitter = yield database_1.default.query("SELECT * FROM heroku_d1337da861f75bf.sitters_info WHERE email = ?", [email]);
+    const existingUser = yield database_1.default.query("SELECT * FROM sql6635153.users_info WHERE email = ?", [email]);
+    const existingSitter = yield database_1.default.query("SELECT * FROM sql6635153.sitters_info WHERE email = ?", [email]);
     if ((Array.isArray(existingUser[0]) && existingUser[0].length > 0) ||
         (Array.isArray(existingSitter[0]) && existingSitter[0].length > 0)) {
         console.log("User exists");
@@ -47,7 +47,7 @@ router.post("/sign-up", (req, res) => __awaiter(void 0, void 0, void 0, function
             hashedPassword,
             req.body.type,
         ];
-        yield database_1.default.query("INSERT INTO heroku_d1337da861f75bf.users_info (first_name, last_name, email, password, type) VALUES (?)", [userData]);
+        yield database_1.default.query("INSERT INTO sql6635153.users_info (first_name, last_name, email, password, type) VALUES (?)", [userData]);
     }
     else if (req.body.type === "sitter") {
         const sitterData = [
@@ -60,15 +60,15 @@ router.post("/sign-up", (req, res) => __awaiter(void 0, void 0, void 0, function
             req.body.hourRate,
             req.body.dayRate,
         ];
-        yield database_1.default.query("INSERT INTO heroku_d1337da861f75bf.sitters_info (first_name, last_name, email, password, type, summary, hour_rate, day_rate) VALUES (?)", [sitterData]);
+        yield database_1.default.query("INSERT INTO sql6635153.sitters_info (first_name, last_name, email, password, type, summary, hour_rate, day_rate) VALUES (?)", [sitterData]);
     }
     res.send("added");
 }));
 //////////////////////////////////////////////////////
 //SIGN IN
 router.post("/log-in", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const registeredUser = (yield database_1.default.query("SELECT * FROM heroku_d1337da861f75bf.users_info WHERE email = ?", [req.body.email]));
-    const registeredSitter = (yield database_1.default.query("SELECT * FROM heroku_d1337da861f75bf.sitters_info WHERE email = ?", [req.body.email]));
+    const registeredUser = (yield database_1.default.query("SELECT * FROM sql6635153.users_info WHERE email = ?", [req.body.email]));
+    const registeredSitter = (yield database_1.default.query("SELECT * FROM sql6635153.sitters_info WHERE email = ?", [req.body.email]));
     if (Array.isArray(registeredUser[0]) && registeredUser[0].length > 0) {
         console.log("Email exists");
         const hashedPassword = registeredUser[0][0].password;

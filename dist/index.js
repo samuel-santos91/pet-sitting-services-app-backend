@@ -11,7 +11,7 @@ const customer_request_page_1 = __importDefault(require("./routes/customer_reque
 const sitter_request_page_1 = __importDefault(require("./routes/sitter_request_page"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
-    origin: "https://64ba4036ee065958269a4ebb--clinquant-frangollo-bba5e1.netlify.app",
+    origin: "https://pet-sitting-service-app.netlify.app",
     methods: ["POST", "GET"],
     credentials: true,
 }));
