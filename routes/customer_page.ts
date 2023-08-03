@@ -1,15 +1,20 @@
 import express, { Request, Response } from "express";
 import multer from "multer";
 import path from "path";
+import dotenv from "dotenv";
 
 import db from "../data/database";
 
 const router = express.Router();
 
+dotenv.config();
+
+const database = process.env.DATABASE_NAME!;
+
 //LIST OF SITTERS
 router.get("/customer/sitters", async (req: Request, res: Response) => {
   const existingSitter = await db.query(
-    "SELECT id, first_name, last_name, summary, hour_rate, day_rate FROM sql6635153.sitters_info;"
+    `SELECT id, first_name, last_name, summary, hour_rate, day_rate FROM ${database}.sitters_info;`
   );
   return res.json({ existingSitter });
 });
@@ -45,7 +50,7 @@ router.post(
       req.file?.path,
     ];
     await db.query(
-      "INSERT INTO sql6635153.users_requests (user, pet, care_type, sitter, message, image_path) VALUES (?)",
+      `INSERT INTO ${database}.users_requests (user, pet, care_type, sitter, message, image_path) VALUES (?)`,
       [userRequest]
     );
     console.log(req.body);

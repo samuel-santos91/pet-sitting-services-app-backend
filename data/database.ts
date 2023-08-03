@@ -1,10 +1,15 @@
 import mysql from 'mysql2/promise';
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const databasePassword = process.env.DATABASE_PASSWORD!;
 
 const pool = mysql.createPool({
-  host: 'sql6.freesqldatabase.com',
-  database: 'sql6635153',
-  user: 'sql6635153',
-  password: '18jgi9psXg',
+  host: 'localhost',
+  database: 'marketplace_app',
+  user: 'root',
+  password: databasePassword,
 });
 
 export default pool;

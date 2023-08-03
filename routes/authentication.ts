@@ -1,14 +1,16 @@
 import express, { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
-
 import dotenv from "dotenv";
 import { RowDataPacket } from "mysql2";
 import bcrypt from "bcrypt";
+
 import db from "../data/database";
 
 const router = express.Router();
 
 dotenv.config();
+
+const database = process.env.DATABASE_NAME!;
 
 ///////////////////////////////////////////////
 
@@ -22,12 +24,12 @@ router.get("/", (req: Request, res: Response) => {
 router.post("/sign-up", async (req: Request, res: Response) => {
   const email = req.body.email;
   const existingUser = await db.query(
-    "SELECT * FROM sql6635153.users_info WHERE email = ?",
+    `SELECT * FROM ${database}.users_info WHERE email = ?`,
     [email]
   );
 
   const existingSitter = await db.query(
-    "SELECT * FROM sql6635153.sitters_info WHERE email = ?",
+    `SELECT * FROM ${database}.sitters_info WHERE email = ?`,
     [email]
   );
 
@@ -53,7 +55,7 @@ router.post("/sign-up", async (req: Request, res: Response) => {
       req.body.type,
     ];
     await db.query(
-      "INSERT INTO sql6635153.users_info (first_name, last_name, email, password, type) VALUES (?)",
+      `INSERT INTO ${database}.users_info (first_name, last_name, email, password, type) VALUES (?)`,
       [userData]
     );
   } else if (req.body.type === "sitter") {
@@ -68,7 +70,7 @@ router.post("/sign-up", async (req: Request, res: Response) => {
       req.body.dayRate,
     ];
     await db.query(
-      "INSERT INTO sql6635153.sitters_info (first_name, last_name, email, password, type, summary, hour_rate, day_rate) VALUES (?)",
+      `INSERT INTO ${database}.sitters_info (first_name, last_name, email, password, type, summary, hour_rate, day_rate) VALUES (?)`,
       [sitterData]
     );
   }
@@ -81,12 +83,12 @@ router.post("/sign-up", async (req: Request, res: Response) => {
 //SIGN IN
 router.post("/log-in", async (req: Request, res: Response) => {
   const registeredUser = (await db.query(
-    "SELECT * FROM sql6635153.users_info WHERE email = ?",
+    `SELECT * FROM ${database}.users_info WHERE email = ?`,
     [req.body.email]
   )) as RowDataPacket[];
 
   const registeredSitter = (await db.query(
-    "SELECT * FROM sql6635153.sitters_info WHERE email = ?",
+    `SELECT * FROM ${database}.sitters_info WHERE email = ?`,
     [req.body.email]
   )) as RowDataPacket[];
 
