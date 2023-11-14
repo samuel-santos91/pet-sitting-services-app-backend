@@ -1,28 +1,51 @@
 # pet-sitting-services-app-backend
+## Description
 Server side code of the Pet Sitting Services application.
 
-## Prerequisites
+## Features
+* RESTful API app management(CRUD operations):
+  * GET list of sitters and requests;
+  * POST requests;
+  * UPDATE accepting/declining requests;
+  * DELETE requests;
+* MySQL database integration;
+* Error handling;
+  
+## Getting started
 
-### Install Node JS
-Refer to https://nodejs.org/en/ to install nodejs
+### Prerequisites
+* Node.js
+* MySQL
 
-## Cloning and Running the Application in local
+### Installation
+* Refer to https://nodejs.org/en/ to install node.js
+* Configure the database connetion in database.ts in the data folder 
 
-Clone the project into local
+### Cloning and Running the Application in local
 
-Install all the npm packages. Go into the project folder and type the following command to install all npm packages
-
+* Clone the project into local
+* Install all the npm packages
+  
 ```bash
 npm install
 ```
-
-In order to run the application Type the following command
+* In order to run the application Type the following command
 
 ```bash
 npm run dev
 ```
+### API Endpoints
+#### Authentication
+* <strong>POST /url/log-in</strong>: saves user's log-in information to compare with the one in the database
+* <strong>POST /url/sign-up</strong>: saves a new user in the database
+#### Customer's page
+* <strong>GET /url/customer/sitters</strong>: to display all the signed up sitters
+* <strong>GET /url/customer/requests</strong>: to display all the requests made by the user
+* <strong>POST /url/customer/post</strong>: saves the user's request in the database
+* <strong>DELETE /url/customer/delete</strong>: to delete a request
+#### Sitter's page
+* <strong>GET /url/sitter/requests</strong>: to display all request sent to the sitter
+* <strong>UPDATE /url/sitter/request_answer</strong>: to accept or decline a request
 
-## Frontend built with React.js
-
-## Instructions
+## Frontend Instructions
 Refer to https://github.com/samuel-santos91/pet-sitting-services-app/tree/main
