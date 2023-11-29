@@ -2,6 +2,9 @@
 ## Description
 Server side code of the Pet Sitting Services application.
 
+### Tech Stack
+* Express.js
+
 ## Features
 * RESTful API app management(CRUD operations):
   * GET list of sitters and requests;
