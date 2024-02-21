@@ -7,7 +7,7 @@ const router = express.Router();
 
 dotenv.config();
 
-const database = process.env.DATABASE_NAME!;
+const database = process.env.MYSQL_ADDON_DB!;
 
 //LIST OF REQUESTS
 router.get("/sitter/requests", async (req: Request, res: Response) => {

@@ -10,7 +10,7 @@ const router = express.Router();
 
 dotenv.config();
 
-const database = process.env.DATABASE_NAME!;
+const database = process.env.MYSQL_ADDON_DB!;
 
 ///////////////////////////////////////////////
 

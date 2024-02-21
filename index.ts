@@ -16,7 +16,7 @@ const corsOptions: CustomCorsOptions = {
   origin: "https://pet-sitting-service-app.netlify.app",
   methods: ["POST", "GET"],
   credentials: true,
-  headers: ["Content-Type", "Authorization"], // Add your custom headers here
+  headers: ["Content-Type", "Authorization"],
 };
 
 app.use(cors(corsOptions));

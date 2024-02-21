@@ -9,7 +9,7 @@ const router = express.Router();
 
 dotenv.config();
 
-const database = process.env.DATABASE_NAME!;
+const database = process.env.MYSQL_ADDON_DB!;
 
 //LIST OF SITTERS
 router.get("/customer/sitters", async (req: Request, res: Response) => {
