@@ -10,7 +10,7 @@ const app: Express = express();
 
 app.use(
   cors({
-    origin: "http://127.0.0.1:5173",
+    origin: "https://pet-sitting-service-app.netlify.app",
     methods: ["POST", "GET"],
     credentials: true,
   })
@@ -24,7 +24,7 @@ app.use(customerPage);
 app.use(customerRequestPage);
 app.use(sitterRequestPage);
 
-const port = process.env.PORT || 3000;
+const port = process.env.MQSQL_ADDON_PORT || 3000;
 
 app.listen(port, () => {
   console.log("server is running");
