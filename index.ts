@@ -13,7 +13,10 @@ interface CustomCorsOptions extends CorsOptions {
 const app: Express = express();
 
 const corsOptions: CustomCorsOptions = {
-  origin: "https://pet-sitting-service-app.netlify.app",
+  origin: [
+    "https://pet-sitting-service-app.netlify.app",
+    "http://localhost:5173",
+  ],
   methods: ["POST", "GET"],
   credentials: true,
   headers: ["Content-Type", "Authorization"],
@@ -29,7 +32,7 @@ app.use(customerPage);
 app.use(customerRequestPage);
 app.use(sitterRequestPage);
 
-const port = process.env.MYSQL_ADDON_PORT || 3000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log("server is running");
